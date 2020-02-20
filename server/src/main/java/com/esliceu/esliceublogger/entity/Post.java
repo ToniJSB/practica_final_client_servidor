@@ -28,7 +28,7 @@ public class Post {
     @JoinColumn(name = "author")
     private String author;
 
-    @Column(name = "date")
+    @Column(name = "date", columnDefinition = "DATETIME")
     private Date date;
 
     public Post() {
