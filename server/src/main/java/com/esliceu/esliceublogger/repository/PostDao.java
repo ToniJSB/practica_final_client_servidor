@@ -3,17 +3,16 @@ package com.esliceu.esliceublogger.repository;
 
 import com.esliceu.esliceublogger.entity.Post;
 import com.esliceu.esliceublogger.entity.User;
+import javafx.geometry.Pos;
+import org.springframework.data.repository.CrudRepository;
 
 import java.util.Date;
 import java.util.List;
 
-public interface PostDao {
-    public List<Post> findAll();
-    public Post findByUser(User user);
-    public Post findByTitle(String title);
-    public Post findByContent(String content);
-    public Post findByDate(Date date);
-    public void save(Post post);
-    public void update(Post post);
-    public void delete(Post post);
+public interface PostDao extends CrudRepository<Post,Integer> {
+    public List<Post> findAllByTitleContainsOrContentContains(String textToFind);
+    public List<Post> findAllByAuthor(String author);
+    public List<Post> findAllByDateBefore(Date date);
+    public List<Post> findAllByDateAfter(Date date);
+
 }
