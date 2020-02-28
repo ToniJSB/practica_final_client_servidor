@@ -31,6 +31,11 @@ public class PostManagerImpl implements PostManager {
     }
 
     @Override
+    public List<Post> getAllByTitleOrContent(String textToFind) {
+        return postDao.findAllByTitleContainsOrContentContains(textToFind,textToFind);
+    }
+
+    @Override
     public List<Post> findByAuthor(String author) {
         return postDao.findAllByAuthor(author);
     }
