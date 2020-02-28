@@ -16,9 +16,7 @@ public class PostManagerImpl implements PostManager {
     PostRepository postDao;
 
     @Override
-    public void save(Post post) {
-        postDao.save(post);
-    }
+    public void save(Post post) { postDao.save(post); }
 
     @Override
     public void delete(Post post) {
