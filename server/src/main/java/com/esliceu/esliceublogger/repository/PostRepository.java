@@ -13,5 +13,6 @@ public interface PostRepository extends CrudRepository<Post,Integer> {
     public List<Post> findAllByAuthor(String author);
     public List<Post> findAllByDateBefore(Date date);
     public List<Post> findAllByDateAfter(Date date);
+    public List<Post> findAllByDateBeforeBetweenDateAfter(Date dateBefore,Date dateAfter);
 
 }
