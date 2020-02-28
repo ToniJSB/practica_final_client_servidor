@@ -1,6 +1,3 @@
-/**
- * @author: Alexis Mora
- */
 package com.esliceu.esliceublogger.controller;
 
 import com.esliceu.esliceublogger.manager.UserManager;
@@ -17,5 +14,10 @@ public class PostController {
     @Autowired
     PostManager postManager;
 
+
+
+    //FINDBYDATA
+    //find author
+    //find all
 
 }
