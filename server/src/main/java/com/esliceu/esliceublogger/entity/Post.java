@@ -25,8 +25,8 @@ public class Post {
     private String langTranslate;
 
     @ManyToOne
-    @JoinColumn(name = "author")
-    private String author;
+    @JoinColumn(name = "idUser")
+    private User author;
 
     @Column(name = "date", columnDefinition = "DATETIME")
     private Date date;
@@ -74,11 +74,11 @@ public class Post {
         this.langTranslate = langTranslate;
     }
 
-    public String getAuthor() {
+    public User getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(User author) {
         this.author = author;
     }
 
