@@ -36,22 +36,22 @@ public class PostManagerImpl implements PostManager {
     }
 
     @Override
-    public List<Post> findByAuthor(String author) {
+    public List<Post> getByAuthor(String author) {
         return postDao.findAllByAuthor(author);
     }
 
     @Override
-    public List<Post> findByDateBefore(Date date) {
+    public List<Post> getByDateBefore(Date date) {
         return postDao.findAllByDateBefore(date);
     }
 
     @Override
-    public List<Post> findByDateAfter(Date date) {
+    public List<Post> getByDateAfter(Date date) {
         return postDao.findAllByDateAfter(date);
     }
 
     @Override
-    public List<Post> findByDateBetween(Date dateBefore, Date dateAfter) {
+    public List<Post> getByDateBetween(Date dateBefore, Date dateAfter) {
         if (dateBefore.compareTo(dateAfter) > 0){
             Date tmp = dateAfter;
             dateAfter = dateBefore;
