@@ -1,6 +1,10 @@
 package com.esliceu.esliceublogger.config;
 
+<<<<<<< Updated upstream
 
+=======
+//import com.esliceu.bootspring.handlers.TokenInterceptor;
+>>>>>>> Stashed changes
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
@@ -26,10 +30,17 @@ public class CorsConfiguration implements WebMvcConfigurer {
                 .allowedMethods("PUT","POST","GET","DELETE","OPTIONS");
     }
 
+<<<<<<< Updated upstream
     /*@Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new TokenInterceptor());
     }*/
+=======
+//    @Override
+//    public void addInterceptors(InterceptorRegistry registry) {
+//        registry.addInterceptor(new TokenInterceptor());
+//    }
+>>>>>>> Stashed changes
 
     public String getUrl() {
         return this.url;
