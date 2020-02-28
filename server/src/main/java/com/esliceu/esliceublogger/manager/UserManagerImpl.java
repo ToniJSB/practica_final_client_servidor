@@ -15,20 +15,16 @@ public class UserManagerImpl  implements UserManager{
     UserRepository userRepository;
 
     @Override
-    public void save(User user) {
-        userRepository.save(user);}
+    public void saveOrUpdate(User user) {
+        userRepository.save(user);
+
+    }
 
     @Override
     public void delete(User user) {
         userRepository.delete(user);
-
     }
 
-    //Futo edit
-    @Override
-    public void edit(User user) {
-
-    }
 
     @Override
     public List<User> getAll() {
@@ -41,7 +37,7 @@ public class UserManagerImpl  implements UserManager{
         return null;
     }
 
-    public List<User> findAllByEmailOrUserName(String s){
-        return this.userRepository.findAllByEmailOrUserName(s,s);
+    public List<User> getAllByEmailOrUserName(String textToFind){
+        return this.userRepository.findAllByEmailOrUserName(textToFind,textToFind);
     }
 }

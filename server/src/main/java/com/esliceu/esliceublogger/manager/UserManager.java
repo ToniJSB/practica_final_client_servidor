@@ -7,9 +7,8 @@ import java.util.List;
 
 public interface UserManager {
 
-    public void save(User user);
+    public void saveOrUpdate(User user);
     public void delete(User user);
-    public void edit(User user);
     public List<User> getAll();
     public Boolean isValidUser(String email, String password);
 

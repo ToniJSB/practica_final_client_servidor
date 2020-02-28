@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="11fe64e0-6193-4f54-9972-d7b0cc53279a" name="Default Changelist" comment="" />
+    <list default="true" id="11fe64e0-6193-4f54-9972-d7b0cc53279a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,6 +36,8 @@
       <option name="presentableId" value="Default" />
       <updated>1582131766399</updated>
       <workItem from="1582131769252" duration="503000" />
+      <workItem from="1582884862219" duration="46000" />
+      <workItem from="1582888618677" duration="171000" />
     </task>
     <servers />
   </component>
@@ -40,10 +45,14 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="956" y="295" width="416" height="510" key="FileChooserDialogImpl" timestamp="1582132266987">
+    <state x="804" y="445" width="302" height="214" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1582888658590">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="956" y="295" width="416" height="510" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1582132266987" />
+    <state x="804" y="445" width="302" height="214" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1582888658590" />
+    <state x="956" y="295" width="416" height="510" key="FileChooserDialogImpl" timestamp="1582884905037">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="956" y="295" width="416" height="510" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1582884905037" />
     <state x="436" y="253" width="1474" height="599" key="new project wizard" timestamp="1582132268643">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
