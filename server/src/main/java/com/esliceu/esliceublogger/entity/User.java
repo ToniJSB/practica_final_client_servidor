@@ -27,7 +27,7 @@ public class User {
     @Column(name = "last_name")
     private String lastName;
 
-    @OneToMany(mappedBy="user")
+    @OneToMany(mappedBy="idUser", fetch = FetchType.EAGER)
     private List<Post> posts;
 
 
