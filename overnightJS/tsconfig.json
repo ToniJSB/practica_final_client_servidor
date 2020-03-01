@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "lib": [
+      "es2015",
+      "dom"
+    ],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "removeComments": true,
+    "strict": true,
+    "target": "es5",
+    "sourceMap": true,
+    "outDir": "dist",
+    "types": [
+      "node"
+    ],
+    "baseUrl": "./",
+    "paths": {
+      "@overnightjs/core": ["../src/core"],
+      "@overnightjs/jwt": ["../src/jwt"],
+      "@overnightjs/logger": ["../src/logger"]
+    }
+  }
+}
