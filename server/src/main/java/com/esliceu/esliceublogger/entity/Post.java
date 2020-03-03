@@ -26,7 +26,7 @@ public class Post {
 
     @ManyToOne
     @JoinColumn(name = "idUser")
-    private User idUser;
+    private User author;
 
     @Column(name = "date", columnDefinition = "DATETIME")
     private Date date;
@@ -75,11 +75,11 @@ public class Post {
     }
 
     public User getAuthor() {
-        return idUser;
+        return this.author;
     }
 
     public void setAuthor(User author) {
-        this.idUser = idUser;
+        this.author = author;
     }
 
     public Date getDate() {

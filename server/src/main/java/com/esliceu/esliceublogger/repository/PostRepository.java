@@ -10,9 +10,9 @@ import java.util.List;
 
 public interface PostRepository extends CrudRepository<Post,Integer> {
     public List<Post> findAllByTitleContainsOrContentContains(String textToFind, String tesxtToFind2);
-    public List<Post> findAllByAuthor(String author);
+    public List<Post> findPostsByAuthor(User author);
     public List<Post> findAllByDateBefore(Date date);
     public List<Post> findAllByDateAfter(Date date);
-    public List<Post> findAllByDateBeforeBetweenDateAfter(Date dateBefore,Date dateAfter);
+    public List<Post> findAllByDateBetween(Date dateBefore,Date dateAfter);
 
 }
