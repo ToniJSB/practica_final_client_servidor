@@ -11,6 +11,7 @@ import java.util.List;
 public interface PostRepository extends CrudRepository<Post,Integer> {
     public List<Post> findAllByTitleContainsOrContentContains(String textToFind, String textToFind2);
     public List<Post> findPostsByAuthor(User author);
+    public Post findByIdPost(long id);
     public List<Post> findAllByDateBefore(Date date);
     public List<Post> findAllByDateAfter(Date date);
     public List<Post> findAllByDateBetween(Date dateBefore,Date dateAfter);
