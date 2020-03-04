@@ -1,17 +1,18 @@
 package com.esliceu.esliceublogger.controller;
 
 import com.esliceu.esliceublogger.entity.Post;
+import com.esliceu.esliceublogger.entity.User;
 import com.esliceu.esliceublogger.manager.UserManager;
 import com.esliceu.esliceublogger.manager.PostManager;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
+import com.google.gson.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.transaction.Transactional;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 public class PostController {
@@ -26,22 +27,38 @@ public class PostController {
     Gson gson;
 
 
-
     @GetMapping("/posts")
-    public ResponseEntity<String> getAll(){
+    public ResponseEntity<String> getAll() {
+        List<Post> posts = this.postManager.getAll();
+        System.out.println(posts);
+        List<String> postsJson = posts.stream().map(post -> {
+            Post postO= new Post();
+            postO.setIdPost(post.getIdPost());
+            postO.setTitle(post.getTitle());
+            postO.setContent(post.getContent());
+            postO.setDate(post.getDate());
+            postO.setLangOriginal(post.getLangOriginal());
+            postO.setLangTranslate(post.getLangTranslate());
 
-        String jsonObject = gson.toJson(this.postManager.getAll());
+            User user = new User();
+            user.setIdUser(post.getAuthor().getIdUser());
+            user.setEmail(post.getAuthor().getEmail());
+            user.setFirstName(post.getAuthor().getFirstName());
+            user.setLastName(post.getAuthor().getLastName());
+            user.setPassword(post.getAuthor().getPassword());
 
-        System.out.println(jsonObject);
+            postO.setAuthor(user);
+            System.out.println("aqui llega");
+            String jsObject = gson.toJson(postO);
+            System.out.println("aqui no llega");
 
 
+            return jsObject;
+        }).collect(Collectors.toList());
+        System.out.println(postsJson.get(0));
 
-        return null;
+        return new ResponseEntity<>(HttpStatus.OK);
     }
-
-
-
-
 
 
     //FINDBYDATA
