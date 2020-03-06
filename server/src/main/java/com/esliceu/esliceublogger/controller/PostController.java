@@ -48,16 +48,18 @@ public class PostController {
             user.setPassword(post.getAuthor().getPassword());
 
             postO.setAuthor(user);
-            System.out.println("aqui llega");
+
             String jsObject = gson.toJson(postO);
-            System.out.println("aqui no llega");
-
-
             return jsObject;
         }).collect(Collectors.toList());
-        System.out.println(postsJson.get(0));
 
-        return new ResponseEntity<>(HttpStatus.OK);
+        StringBuilder json = new StringBuilder();
+        for (String string: postsJson) {
+            json.append(string);
+        }
+        System.out.println(json);
+
+        return new ResponseEntity<>(json.toString(),HttpStatus.OK);
     }
 
 

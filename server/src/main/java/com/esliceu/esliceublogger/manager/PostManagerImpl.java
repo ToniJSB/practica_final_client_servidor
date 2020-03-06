@@ -30,6 +30,11 @@ public class PostManagerImpl implements PostManager {
     }
 
     @Override
+    public Post getByIdPost(String id) {
+        return postDao.findByIdPost(Long.parseLong(id));
+    }
+
+    @Override
     public List<Post> getAllByTitleOrContent(String textToFind) {
         return postDao.findAllByTitleContainsOrContentContains(textToFind,textToFind);
     }
