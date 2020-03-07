@@ -18,7 +18,7 @@ export class LoginServer extends Server {
         let whitelistString: string = <string>process.env.WHITELIST
         const whitelist = whitelistString.split(',')
         const options: cors.CorsOptions = {
-            origin:'whitelist',//whitelist ,
+            origin:whitelist,
             credentials: true,
             allowedHeaders: 'Authorization, Origin, X-Requested-With, Content-Type, Accept',
             methods: 'POST, GET, DELETE, PUT, OPTIONS',
