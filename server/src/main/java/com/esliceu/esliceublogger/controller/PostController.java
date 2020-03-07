@@ -31,6 +31,7 @@ public class PostController {
     public ResponseEntity<String> getAll() {
         List<Post> posts = this.postManager.getAll();
         System.out.println(posts);
+        JsonArray jsonArray = new JsonArray();
         List<String> postsJson = posts.stream().map(post -> {
             Post postO= new Post();
             postO.setIdPost(post.getIdPost());
@@ -50,6 +51,7 @@ public class PostController {
             postO.setAuthor(user);
 
             String jsObject = gson.toJson(postO);
+            jsonArray.add(jsObject);
             return jsObject;
         }).collect(Collectors.toList());
 
@@ -57,7 +59,8 @@ public class PostController {
         for (String string: postsJson) {
             json.append(string);
         }
-        System.out.println(json);
+        System.out.println(json.toString());
+        System.out.println(jsonArray);
 
         return new ResponseEntity<>(json.toString(),HttpStatus.OK);
     }
