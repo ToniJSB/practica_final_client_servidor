@@ -1,5 +1,6 @@
 package com.esliceu.esliceublogger.config;
 
+//import com.esliceu.bootspring.handlers.TokenInterceptor;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
@@ -26,10 +27,10 @@ public class CorsConfiguration implements WebMvcConfigurer {
                 .allowedMethods("PUT","POST","GET","DELETE","OPTIONS");
     }
 
-    /*@Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new TokenInterceptor());
-    }*/
+//    @Override
+//    public void addInterceptors(InterceptorRegistry registry) {
+//        registry.addInterceptor(new TokenInterceptor());
+//    }
 
     public String getUrl() {
         return this.url;

@@ -38,6 +38,6 @@ public class UserManagerImpl  implements UserManager{
     }
 
     public List<User> getAllByEmailOrUserName(String textToFind){
-        return this.userRepository.findAllByEmailOrUserName(textToFind,textToFind);
+        return this.userRepository.getByEmailOrUserName(textToFind,textToFind);
     }
 }

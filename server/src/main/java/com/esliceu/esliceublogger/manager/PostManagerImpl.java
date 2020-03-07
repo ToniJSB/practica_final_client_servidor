@@ -2,6 +2,7 @@ package com.esliceu.esliceublogger.manager;
 
 
 import com.esliceu.esliceublogger.entity.Post;
+import com.esliceu.esliceublogger.entity.User;
 import com.esliceu.esliceublogger.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,13 +30,18 @@ public class PostManagerImpl implements PostManager {
     }
 
     @Override
+    public Post getByIdPost(String id) {
+        return postDao.findByIdPost(Long.parseLong(id));
+    }
+
+    @Override
     public List<Post> getAllByTitleOrContent(String textToFind) {
         return postDao.findAllByTitleContainsOrContentContains(textToFind,textToFind);
     }
 
     @Override
-    public List<Post> getByAuthor(String author) {
-        return postDao.findAllByAuthor(author);
+    public List<Post> getByAuthor(User author) {
+        return postDao.findPostsByAuthor(author);
     }
 
     @Override
@@ -55,6 +61,6 @@ public class PostManagerImpl implements PostManager {
             dateAfter = dateBefore;
             dateBefore=tmp;
         }
-        return postDao.findAllByDateBeforeBetweenDateAfter(dateBefore,dateAfter);
+        return postDao.findAllByDateBetween(dateBefore,dateAfter);
     }
 }
