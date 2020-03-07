@@ -22,7 +22,7 @@ public class PostFormController {
     Gson gson;
 
     @GetMapping("/postForm")
-    public ResponseEntity<String> postForm(@RequestParam(name = "id") String id){
+    public ResponseEntity<String> postForm(@RequestParam(name = "id") String id) {
         Post postGetted = postManager.getByIdPost(id);
         Post newPost = new Post();
 

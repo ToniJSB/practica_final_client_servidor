@@ -17,7 +17,9 @@ public class PostManagerImpl implements PostManager {
     PostRepository postDao;
 
     @Override
-    public void save(Post post) { postDao.save(post); }
+    public void save(Post post) {
+        postDao.save(post);
+    }
 
     @Override
     public void delete(Post post) {
@@ -36,7 +38,7 @@ public class PostManagerImpl implements PostManager {
 
     @Override
     public List<Post> getAllByTitleOrContent(String textToFind) {
-        return postDao.findAllByTitleContainsOrContentContains(textToFind,textToFind);
+        return postDao.findAllByTitleContainsOrContentContains(textToFind, textToFind);
     }
 
     @Override
@@ -56,11 +58,11 @@ public class PostManagerImpl implements PostManager {
 
     @Override
     public List<Post> getByDateBetween(Date dateBefore, Date dateAfter) {
-        if (dateBefore.compareTo(dateAfter) > 0){
+        if (dateBefore.compareTo(dateAfter) > 0) {
             Date tmp = dateAfter;
             dateAfter = dateBefore;
-            dateBefore=tmp;
+            dateBefore = tmp;
         }
-        return postDao.findAllByDateBetween(dateBefore,dateAfter);
+        return postDao.findAllByDateBetween(dateBefore, dateAfter);
     }
 }

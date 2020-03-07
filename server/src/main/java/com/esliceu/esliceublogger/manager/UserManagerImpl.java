@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class UserManagerImpl  implements UserManager{
+public class UserManagerImpl implements UserManager {
     @Autowired
     UserRepository userRepository;
 
@@ -37,7 +37,7 @@ public class UserManagerImpl  implements UserManager{
         return null;
     }
 
-    public List<User> getAllByEmailOrUserName(String textToFind){
-        return this.userRepository.getByEmailOrUserName(textToFind,textToFind);
+    public List<User> getAllByEmailOrUserName(String textToFind) {
+        return this.userRepository.getByEmailOrUserName(textToFind, textToFind);
     }
 }

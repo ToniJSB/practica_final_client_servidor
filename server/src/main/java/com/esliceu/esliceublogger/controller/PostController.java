@@ -2,6 +2,7 @@ package com.esliceu.esliceublogger.controller;
 
 import com.esliceu.esliceublogger.entity.Post;
 import com.esliceu.esliceublogger.entity.User;
+import com.esliceu.esliceublogger.manager.TokenManager;
 import com.esliceu.esliceublogger.manager.UserManager;
 import com.esliceu.esliceublogger.manager.PostManager;
 import com.google.gson.*;
@@ -33,7 +34,7 @@ public class PostController {
         System.out.println(posts);
         JsonArray jsonArray = new JsonArray();
         List<String> postsJson = posts.stream().map(post -> {
-            Post postO= new Post();
+            Post postO = new Post();
             postO.setIdPost(post.getIdPost());
             postO.setTitle(post.getTitle());
             postO.setContent(post.getContent());
@@ -56,13 +57,13 @@ public class PostController {
         }).collect(Collectors.toList());
 
         StringBuilder json = new StringBuilder();
-        for (String string: postsJson) {
+        for (String string : postsJson) {
             json.append(string);
         }
         System.out.println(json.toString());
         System.out.println(jsonArray);
 
-        return new ResponseEntity<>(json.toString(),HttpStatus.OK);
+        return new ResponseEntity<>(json.toString(), HttpStatus.OK);
     }
 
 
