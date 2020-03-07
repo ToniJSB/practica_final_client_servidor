@@ -38,7 +38,7 @@ public class PostFormController {
         user.setLastName(postGetted.getAuthor().getLastName());
         user.setPassword(postGetted.getAuthor().getPassword());
         user.setUserName(postGetted.getAuthor().getUserName());
-
+ 
         newPost.setAuthor(user);
         String jsonObjsect = gson.toJson(newPost);
         return new ResponseEntity<>(jsonObjsect, HttpStatus.OK);
