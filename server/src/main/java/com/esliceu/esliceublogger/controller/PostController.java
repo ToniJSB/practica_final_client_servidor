@@ -33,7 +33,7 @@ public class PostController {
         List<Post> posts = this.postManager.getAll();
         System.out.println(posts);
         List<String> postsJson = posts.stream().map(post -> {
-            Post postO= new Post();
+            Post postO = new Post();
             postO.setIdPost(post.getIdPost());
             postO.setTitle(post.getTitle());
             postO.setContent(post.getContent());
@@ -55,12 +55,12 @@ public class PostController {
         }).collect(Collectors.toList());
 
         StringBuilder json = new StringBuilder();
-        for (String string: postsJson) {
+        for (String string : postsJson) {
             json.append(string);
         }
         System.out.println(json);
 
-        return new ResponseEntity<>(json.toString(),HttpStatus.OK);
+        return new ResponseEntity<>(json.toString(), HttpStatus.OK);
     }
 
 
