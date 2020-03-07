@@ -31,6 +31,7 @@ public class PostFormController {
         newPost.setLangOriginal(postGetted.getLangOriginal());
         newPost.setLangTranslate(postGetted.getLangTranslate());
         newPost.setDate(postGetted.getDate());
+
         User user = new User();
         user.setIdUser(postGetted.getAuthor().getIdUser());
         user.setEmail(postGetted.getAuthor().getEmail());

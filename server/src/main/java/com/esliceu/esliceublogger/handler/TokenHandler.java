@@ -25,9 +25,9 @@ public class TokenHandler implements HandlerInterceptor {
                 String token = auth.replace("Bearer ", "");
                 boolean valid = tokenManager.validate(token);
                 if (!valid) {
-                    response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                    //response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                    response.sendRedirect("http:localhost:3000/login");
                     return false;
-                    //Maybe here we have to redirect to /login
                 } else {
                     response.setStatus(HttpServletResponse.SC_OK);
                 }
