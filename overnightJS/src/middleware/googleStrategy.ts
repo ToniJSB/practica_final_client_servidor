@@ -8,7 +8,7 @@ require('../config/environment')
 passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  callbackURL: "http://localhost:8080/posts"
+  callbackURL: "http://localhost:3000/posts"
 },
   function (accessToken: any, refreshToken: any, profile: any, done: any) {
     console.log({
@@ -18,4 +18,6 @@ passport.use(new GoogleStrategy({
       done: done
     })
   }
+  //
+
 ))
