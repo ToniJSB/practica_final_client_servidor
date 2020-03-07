@@ -26,22 +26,21 @@ public class PostFormController {
         Post postGetted = postManager.getByIdPost(id);
         Post newPost = new Post();
 
-        newPost.setTitle(postGetted.getTitle());
-        newPost.setContent(postGetted.getContent());
-        newPost.setLangOriginal(postGetted.getLangOriginal());
-        newPost.setLangTranslate(postGetted.getLangTranslate());
-        newPost.setDate(postGetted.getDate());
-        User user = new User();
-        user.setIdUser(postGetted.getAuthor().getIdUser());
-        user.setEmail(postGetted.getAuthor().getEmail());
-        user.setFirstName(postGetted.getAuthor().getFirstName());
-        user.setLastName(postGetted.getAuthor().getLastName());
-        user.setPassword(postGetted.getAuthor().getPassword());
-        user.setUserName(postGetted.getAuthor().getUserName());
- 
-        newPost.setAuthor(user);
-        String jsonObjsect = gson.toJson(newPost);
-        return new ResponseEntity<>(jsonObjsect, HttpStatus.OK);
+            Post newPost = new Post();
+            newPost.setTitle(postGetted.getTitle());
+            newPost.setContent(postGetted.getContent());
+            newPost.setLangOriginal(postGetted.getLangOriginal());
+            newPost.setLangTranslate(postGetted.getLangTranslate());
+            newPost.setDate(postGetted.getDate());
+
+            User user = new User();
+            user.setEmail(postGetted.getAuthor().getEmail());
+            newPost.setAuthor(user);
+
+            String jsonObjsect = gson.toJson(newPost);
+            return new ResponseEntity<>(jsonObjsect, HttpStatus.OK);
+        }
+        return new ResponseEntity<>("POST NOT FOUND" ,HttpStatus.NOT_FOUND);
     }
 
 
