@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.google.gson.Gson;
 
+import java.util.IllegalFormatCodePointException;
+
 @RestController
 public class PostFormController {
 
@@ -23,8 +25,9 @@ public class PostFormController {
 
     @GetMapping("/postForm")
     public ResponseEntity<String> postForm(@RequestParam(name = "id") String id) {
+
         Post postGetted = postManager.getByIdPost(id);
-        Post newPost = new Post();
+        if (postGetted != null) {
 
             Post newPost = new Post();
             newPost.setTitle(postGetted.getTitle());
