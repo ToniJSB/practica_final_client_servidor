@@ -57,10 +57,16 @@ public class PostFormController {
             @RequestParam(name = "content") String content,
             @RequestParam(name = "langOriginal") String langOriginal,
             @RequestParam(name = "langTranslate") String langTranslate) {
-
-        postManager.save(
-                new Post()
-        );
+        Post postToUpdate = postManager.getByIdPost(idPost);
+        if (postToUpdate != null){
+            postToUpdate.setTitle(title);
+            postToUpdate.setContent(content);
+            postToUpdate.setLangOriginal(langOriginal);
+            postToUpdate.setLangTranslate(langTranslate);
+            postManager.save(postToUpdate);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
+        return new ResponseEntity<>("POST NOT FOUND" ,HttpStatus.NOT_FOUND);
     }
 }
 
