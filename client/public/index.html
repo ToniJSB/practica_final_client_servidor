@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <Post v-for="postGetted in posts" :key="postGetted.title" v-bind="postGetted"></Post>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+
+        var Post = {
+            props: {
+                title:{
+                    type: String,
+                },
+                content:{
+                    type: String,
+                },
+                dateupdated:{
+                    type: String,
+                },
+                datepublished:{
+                    type: String,
+                },
+                author:{
+                    type: String,
+                }
+            },
+            template: `    <div>
+                            <h1> {{title}} </h1>    
+                            <p> {{content}} </p>    
+                            <h3> {{datepublished}} </h3>    
+                            <h3> {{dateupdated}} </h3>    
+                            <h2> {{author}} </h2>  
+                            <a href="postForm"><button>editar post</button></a>
+                            <a href="../postForm"><button>eliminar post</button></a>
+                        </div>`
+        }
+
+        var app = new Vue({
+            el: '#app',
+            components: {
+                'Post': Post
+            },
+            data:{
+                posts: [],
+                postsFilter: []
+            },
+            created: async function(){
+                this.getAll();
+            },
+            methods:{
+                async getAll(){
+
+                    let promiseJson = await fetch('http://localhost:8080/posts', {
+                        method: 'GET',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        },
+                    })
+                    console.log(await promiseJson)
+                    let responseJson = await promiseJson.json();
+                    console.log(await responseJson)
+                    let posts = await responseJson.items;
+                    responseJson.forEach(post => {
+                        this.posts.push(JSON.parse(post))
+
+                    })
+
+                }
+            }
+
+        })
+    </script>
+</body>
+</html>
