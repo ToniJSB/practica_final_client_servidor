@@ -10,6 +10,7 @@ export class LoginController {
 
     @Get('')
     get(req: Request, res: Response, next: NextFunction) {
+        
     }
 
     @Get('google')
@@ -19,7 +20,11 @@ export class LoginController {
     @Get('google/callback')
     @Middleware(passport.authenticate('google', { session: false }))
     loginGoogleCallback(req: Request, res: Response, next: NextFunction): any {
-        res.send(this.generateToken(req.user))
+        res.setHeader('Content-type','application/json')
+        res.end({
+            token: this.generateToken(req.user)
+        })
+    
     }
 
     @Get('local')
