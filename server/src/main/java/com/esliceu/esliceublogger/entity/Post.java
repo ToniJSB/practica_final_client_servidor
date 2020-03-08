@@ -34,6 +34,15 @@ public class Post {
     public Post() {
     }
 
+    public Post(long idPost,String title,String content, String langOriginal, String langTranslate, User author,Date date) {
+        setIdPost(idPost);
+        setTitle(title);
+        setContent(content);
+        setLangOriginal(langOriginal);
+        setLangTranslate(langTranslate);
+        setAuthor(author);
+        setDate(date);
+    }
     public long getIdPost() {
         return idPost;
     }
