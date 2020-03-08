@@ -5,8 +5,6 @@ package com.esliceu.esliceublogger.manager;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.impl.TextCodec;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -18,13 +16,9 @@ public class TokenManagerImpl implements TokenManager {
     @Override
     public boolean validate(String token) {
         try {
-            Claims claims = Jwts.
-                    parser().
-                    setSigningKey(secret_key.getBytes()).
-                    parseClaimsJws(token).
-                    getBody();
-
-            return claims != null;
+        Claims claims = Jwts.parser().setSigningKey(secret_key.getBytes()).parseClaimsJws(token).getBody();
+            System.out.println("toKEN: "+claims);
+            return true;
         } catch (Exception e) {
             return false;
         }
