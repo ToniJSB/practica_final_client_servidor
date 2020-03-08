@@ -1,10 +1,12 @@
 
 const routes = [
   {
-    path: '/',
+    path: '/private',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/Index.vue') }
+      { path: 'login', component: () => import('pages/Index.vue') },
+      { path: 'posts', component: () => import('pages/Index.vue') },
+      { path: 'postForm', component: () => import('pages/Index.vue') }
     ]
   }
 ]
