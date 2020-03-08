@@ -1,8 +1,11 @@
 import { Controller, Get, Post, Middleware } from '@overnightjs/core';
 import { NextFunction, Request, Response } from 'express';
+
+const googleStrategy = require('./../middleware/googleStrategy')
+const localStrategy = require('./../middleware/localStrategy')
 const jwt = require('jsonwebtoken')
 const passport = require('passport')
-const googleStrategy = require('./../middleware/googleStrategy')
+
 require('../config/environment')
 
 @Controller('login')
@@ -27,12 +30,13 @@ export class LoginController {
     
     }
 
-    @Get('local')
+    @Post('local')
+    @Middleware(passport.authenticate('local',{session: false} ))
     loginLocal(req: Request, res: Response, next: NextFunction): any {
-        console.log("autentificacio amb local", {
-            req: req,
-            res: res,
-        })
+           console.log("autentificacio amb local", {
+              req: req,
+              res: res,
+          }) 
     }
 
     private generateToken(email: any) {

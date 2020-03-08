@@ -1,5 +1,6 @@
 import mysql = require('mysql');
 require('../config/environment')
+
 export default class MySQL {
 
     private static _instance: MySQL;
@@ -22,23 +23,23 @@ export default class MySQL {
         this.conectarDB();
     }
 
-    public static get instance(){
-        return this._instance || ( this._instance = new this());
+    public static get instance() {
+        return this._instance || (this._instance = new this());
     }
 
-    static ejecutarQuery(query: string, callback: Function){
+    static ejecutarQuery(query: string, callback: Function) {
 
         this.instance.cnn.query(query, (err, results: Object[], fields) => {
 
-            if(err){
+            if (err) {
                 console.log('Error en la query');
                 console.log(err);
                 return callback(err);
             }
 
-            if(results.length === 0){
+            if (results.length === 0) {
                 return callback('El registro solicitado no existe');
-            }else{
+            } else {
                 return callback(null, results);
             }
 
@@ -46,6 +47,7 @@ export default class MySQL {
 
         });
     }
+
 
     private conectarDB() {
         this.cnn.connect((err: mysql.MysqlError) => {
@@ -61,5 +63,4 @@ export default class MySQL {
         })
     }
 
-
-}
+} 
