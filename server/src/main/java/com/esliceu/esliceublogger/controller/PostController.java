@@ -49,7 +49,7 @@ public class PostController {
             user.setLastName(post.getAuthor().getLastName());
             user.setPassword(post.getAuthor().getPassword());
 
-            postO.setAuthor(user);
+            postO.setAuthor(user);//Here we shouldnt return the entire User object, just the e-meail.
 
             String jsObject = gson.toJson(postO);
             jsonArray.add(jsObject);
