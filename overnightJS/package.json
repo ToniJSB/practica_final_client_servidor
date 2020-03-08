@@ -6,7 +6,7 @@
   "scripts": {
     "test": "dev"
   },
-  "author": "Alexis Mora",
+  "author": "Alexis Mora, Nico Lagrega, Toni Jimenez",
   "license": "MIT",
   "dependencies": {
     "@overnightjs/core": "^1.6.14",
