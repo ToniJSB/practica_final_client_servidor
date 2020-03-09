@@ -19,6 +19,6 @@ public class InterceptorConfiguration implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new TokenHandler());
-        registry.addInterceptor(getHandler()).addPathPatterns("/**").excludePathPatterns("");
+        registry.addInterceptor(getHandler()).addPathPatterns("/**").excludePathPatterns("/loginLocal");
     }
 }
