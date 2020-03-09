@@ -6,7 +6,8 @@ const routes = [
     children: [
       { path: 'login', component: () => import('pages/Index.vue') },
       { path: 'posts', component: () => import('pages/Posts.vue') },
-      { path: 'postForm', component: () => import('pages/PostForm.vue') }
+      { path: 'postForm', component: () => import('pages/PostForm.vue') },
+      { path: 'calculadora', component: () => import('pages/CalculadoraPage.vue') }
     ]
   }
 ]
