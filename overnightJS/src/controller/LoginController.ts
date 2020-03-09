@@ -23,10 +23,11 @@ export class LoginController {
     @Get('google/callback')
     @Middleware(passport.authenticate('google', { session: false }))
     loginGoogleCallback(req: Request, res: Response, next: NextFunction): any {
-        res.setHeader('Content-type','application/json')
+       /* res.setHeader('Content-type','application/json')
         res.end({
             token: this.generateToken(req.user)
-        })
+        })*/
+        res.send(this.generateToken(req.user))
     
     }
 
@@ -41,7 +42,7 @@ export class LoginController {
 
     private generateToken(email: any) {
         let tokenData = {
-            email: email
+            sub: email
         }
         let token = jwt.sign(tokenData, process.env.TOKEN_SECRET, {
             expiresIn: 60 * 60 * 24//Expires in 24h

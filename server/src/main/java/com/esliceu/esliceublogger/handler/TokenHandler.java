@@ -4,6 +4,7 @@
 package com.esliceu.esliceublogger.handler;
 
 import com.esliceu.esliceublogger.manager.TokenManager;
+import com.esliceu.esliceublogger.manager.TokenManagerImpl;
 import io.jsonwebtoken.JwtException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,8 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 @Component
 public class TokenHandler implements HandlerInterceptor {
-    @Autowired
-    TokenManager tokenManager;
+   /* @Autowired
+    TokenManager tokenManager;*/
     
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -23,6 +24,7 @@ public class TokenHandler implements HandlerInterceptor {
             String auth = request.getHeader("Authorization");
             if (auth != null && !auth.isEmpty()) {
                 String token = auth.replace("Bearer ", "");
+                TokenManager tokenManager = new TokenManagerImpl();
                 boolean valid = tokenManager.validate(token);
                 if (!valid) {
                     System.out.println("No es valido");
