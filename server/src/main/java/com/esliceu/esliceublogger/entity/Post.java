@@ -1,5 +1,7 @@
 package com.esliceu.esliceublogger.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -26,9 +28,10 @@ public class Post {
 
     @ManyToOne
     @JoinColumn(name = "idUser")
+    @JsonManagedReference
     private User author;
 
-    @Column(name = "date", columnDefinition = "DATETIME")
+    @Column(name = "date", columnDefinition = "DATE")
     private Date date;
 
     public Post() {

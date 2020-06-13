@@ -1,19 +1,30 @@
+import { TokenJwt } from "../jwtToken/TokenGen";
 import MySQL from "../mysql/mysql";
 
+const mysql = MySQL.getInstance();
 var passport = require('passport')
-  , LocalStrategy = require('passport-local').Strategy;
+var LocalStrategy = require('passport-local').Strategy;
 
-  var email  = '551'
   
-passport.use(new LocalStrategy(
+passport.use(new LocalStrategy({
+  usernameField: 'email'
+},
 
-  function(email:any, password:any, done:any) {
-    console.log('entra')
-    const query = 'SELECT * FROM user WHERE email = ' + email
+  async function(email:any, password:any, done:any) {
+    
+    mysql.executeQuery('SELECT * FROM user where user.email = "'+email+'"',(usuari:any)=> {
+      
+      console.log(usuari)
 
-    MySQL.ejecutarQuery(query, function (err: any, result: any, done: any) {
+      if (usuari[0].password == password){
+        console.log(usuari[0].email) 
+        return done(null,usuari[0].email)
+      }else{
+        console.log('error')
+          return done('error de auth')
+      }
 
-      console.log(result)
+
     
     })
     /*  User.findOne({ username: username }, function(err:any, user:any) {

@@ -1,5 +1,9 @@
 var passport = require('passport')
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy
+
+import { TokenJwt } from "../jwtToken/TokenGen";
+import MySQL from '../mysql/mysql'
+
 require('../config/environment')
 // Use the GoogleStrategy within Passport.
 //   Strategies in Passport require a `verify` function, which accept
@@ -9,6 +13,9 @@ const GOOGLE_AUTHORIZATION_URL = "https://accounts.google.com/o/oauth2/v2/auth"
 const GOOGLE_TOKEN_URL = "https://www.googleapis.com/oauth2/v4/token"
 const GOOGLE_USERINFO_URL = "https://www.googleapis.com/oauth2/v3/userinfo"
 
+const mysql = MySQL.getInstance();
+
+
 passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
@@ -16,12 +23,20 @@ passport.use(new GoogleStrategy({
 },
   function (accessToken: any, refreshToken: any, profile: any, done: any) {
 
-    let userEmail = profile.emails[0].value
-    console.log(userEmail)  
-    //here we have to authenticate the email
-    // if it does not exist, we have to throw an error,
-    // if it does exists, we create a jwt
-    return done(null,userEmail)  
+    const userEmail = profile.emails[0].value
+
+    mysql.executeQuery('SELECT * FROM user ',(usuaris:any)=>{
+      
+      usuaris.forEach((usuari:any) => {
+        if (usuari.email == userEmail){
+          let jwtToken = TokenJwt.generateToken(userEmail)
+          return done(null, jwtToken)  
+        }
+      });
+
+      done(null,'Este correo no está en nuesta base de datos')
+    })
+
   }
 
 

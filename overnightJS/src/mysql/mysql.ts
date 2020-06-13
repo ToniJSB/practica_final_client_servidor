@@ -3,13 +3,13 @@ require('../config/environment')
 
 export default class MySQL {
 
-    private static _instance: MySQL;
+    private static instance: MySQL;
 
     cnn: mysql.Connection;
 
     conectado: boolean = false;
 
-    constructor() {
+    private constructor() {
 
         console.log('Clase inicializada');
 
@@ -20,16 +20,19 @@ export default class MySQL {
             database: process.env.DB_NAME
         });
 
-        this.conectarDB();
+        this.conectDB();
     }
 
-    public static get instance() {
-        return this._instance || (this._instance = new this());
+    public static getInstance() {
+        if (this.instance==null){
+            this.instance = new this()
+        }
+        return this.instance;
     }
 
-    static ejecutarQuery(query: string, callback: Function) {
+    public executeQuery(query: string, callback: Function) {
 
-        this.instance.cnn.query(query, (err, results: Object[], fields) => {
+        this.cnn.query(query, (err, results: Object[], fields) => {
 
             if (err) {
                 console.log('Error en la query');
@@ -40,16 +43,14 @@ export default class MySQL {
             if (results.length === 0) {
                 return callback('El registro solicitado no existe');
             } else {
-                return callback(null, results);
+                return callback(results);
             }
-
-            return callback(null, results);
 
         });
     }
 
 
-    private conectarDB() {
+    private conectDB() {
         this.cnn.connect((err: mysql.MysqlError) => {
 
             if (err) {

@@ -1,5 +1,8 @@
 package com.esliceu.esliceublogger.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -19,6 +22,7 @@ public class User {
     private String userName;
 
     @Column(name = "password")
+    @JsonIgnore
     private String password;
 
     @Column(name = "first_name")
@@ -28,6 +32,7 @@ public class User {
     private String lastName;
 
     @OneToMany(mappedBy = "author", fetch = FetchType.EAGER)
+    @JsonBackReference
     private List<Post> posts;
 
 
